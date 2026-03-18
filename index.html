@@ -2,138 +2,126 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BharatPulse — Karnataka & India News Intelligence</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BharatPulse v2 — India's Live News Intelligence</title>
+<meta name="description" content="India's unified real-time news — all platforms, all states, courts, prices, weather, crime stats.">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080810;--bg2:#0e0e1a;--bg3:#161624;--bg4:#1e1e2e;--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.11);--text:#eeeef8;--text2:#8888a8;--text3:#4a4a6a;--red:#ff4444;--green:#00d48a;--blue:#4a9eff;--orange:#ffaa22;--purple:#a066ff;--teal:#00c8d4;}
+:root{--bg:#080810;--bg2:#0e0e1a;--bg3:#161624;--bg4:#1e1e2e;--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.11);--text:#eeeef8;--text2:#8888a8;--text3:#4a4a6a;--red:#ff4444;--green:#00d48a;--blue:#4a9eff;--orange:#ffaa22;--purple:#a066ff;--teal:#00c8d4;--pink:#ff6eb0;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
-/* TICKER */
-.ticker{height:28px;background:#cc0000;display:flex;align-items:center;overflow:hidden;}
-.ticker-lbl{background:#990000;height:28px;padding:0 14px;display:flex;align-items:center;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;color:#fff;flex-shrink:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+.ticker{height:28px;background:#b30000;overflow:hidden;display:flex;align-items:center;}
+.ticker-lbl{background:#800000;height:28px;padding:0 14px;display:flex;align-items:center;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;color:#fff;flex-shrink:0;}
 .ticker-scroll{overflow:hidden;flex:1;}
-.ticker-inner{display:inline-flex;gap:50px;animation:scrolll 60s linear infinite;padding-left:20px;}
-.ticker-inner span{font-size:11px;color:#fff;white-space:nowrap;}
-@keyframes scrolll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-/* HEADER */
-header{background:var(--bg2);border-bottom:1px solid var(--border);height:52px;padding:0 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;}
-.logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);}
-.logo-ic{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.ticker-inner{display:inline-flex;gap:50px;animation:scroll-left 70s linear infinite;white-space:nowrap;padding-left:30px;}
+.ticker-inner span{font-size:11.5px;color:#fff;opacity:.9;}
+@keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+header{background:var(--bg2);border-bottom:1px solid var(--border);height:54px;padding:0 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;}
+.logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:7px;flex-shrink:0;text-decoration:none;color:var(--text);}
+.logo-icon{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
 .logo em{color:var(--red);font-style:normal;}
-.srch{flex:1;max-width:480px;position:relative;}
-.srch input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 12px 7px 34px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;}
-.srch input::placeholder{color:var(--text3);}
-.srch svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.35;}
-.hdr-r{margin-left:auto;display:flex;align-items:center;gap:8px;}
-.live-chip{background:rgba(0,212,138,.08);border:1px solid rgba(0,212,138,.2);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;cursor:pointer;}
-.dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite;}
+.searchbox{flex:1;max-width:480px;position:relative;}
+.searchbox input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 12px 7px 34px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;}
+.searchbox input:focus{border-color:var(--border2);}
+.searchbox input::placeholder{color:var(--text3);}
+.search-ico{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.loc-chip{background:rgba(0,212,138,.08);border:1px solid rgba(0,212,138,.2);border-radius:20px;padding:5px 11px;font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
-.hbtn{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:6px 12px;font-size:12px;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;display:flex;align-items:center;gap:5px;}
+.hbtn{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:6px 12px;font-size:12px;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .15s;}
 .hbtn:hover{border-color:var(--border2);color:var(--text);}
-.hbtn.active{background:rgba(160,102,255,.15);border-color:rgba(160,102,255,.3);color:var(--purple);}
-/* TABS */
-.tabs{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;padding:0 16px;gap:2px;overflow-x:auto;}
-.tabs::-webkit-scrollbar{display:none;}
-.tab{padding:10px 14px;font-size:12px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;font-weight:400;}
-.tab:hover{color:var(--text);}
-.tab.active{color:var(--text);border-bottom-color:var(--blue);font-weight:500;}
-.tab.red.active{border-bottom-color:var(--red);color:var(--red);}
-.tab.grn.active{border-bottom-color:var(--green);color:var(--green);}
-.tab.org.active{border-bottom-color:var(--orange);color:var(--orange);}
-.tab.purp.active{border-bottom-color:var(--purple);color:var(--purple);}
-/* LAYOUT */
-.layout{display:grid;grid-template-columns:200px 1fr 260px;min-height:calc(100vh - 108px);}
-/* SIDEBAR */
-.sidebar{background:var(--bg2);border-right:1px solid var(--border);padding:12px 0;position:sticky;top:108px;height:calc(100vh - 108px);overflow-y:auto;}
+.spinning{animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.layout{display:grid;grid-template-columns:200px 1fr 260px;min-height:calc(100vh - 56px);}
+.sidebar{background:var(--bg2);border-right:1px solid var(--border);padding:12px 0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;}
 .sidebar::-webkit-scrollbar{width:2px;}
-.sidebar::-webkit-scrollbar-thumb{background:var(--border2);}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 .s-hd{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:10px 14px 4px;}
-.s-item{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:12px;color:var(--text2);cursor:pointer;border-left:2px solid transparent;transition:all .12s;user-select:none;}
+.s-item{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:12px;color:var(--text2);cursor:pointer;border-left:2px solid transparent;transition:all .12s;}
 .s-item:hover{color:var(--text);background:rgba(255,255,255,.025);}
 .s-item.active{color:var(--text);background:rgba(74,158,255,.08);border-left-color:var(--blue);}
-.s-ico{font-size:13px;width:16px;text-align:center;}
-.s-n{margin-left:auto;font-size:10px;padding:1px 6px;border-radius:10px;}
+.s-ico{font-size:12px;width:15px;text-align:center;}
+.s-n{margin-left:auto;font-size:10px;padding:1px 5px;border-radius:9px;}
 .s-n.r{background:rgba(255,68,68,.18);color:var(--red);}
 .s-n.g{background:rgba(0,212,138,.15);color:var(--green);}
-/* DISTRICT SELECT */
-.district-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:8px;}
-.district-bar label{font-size:11px;color:var(--text3);white-space:nowrap;}
-.district-bar select{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:5px 10px;font-size:12px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;flex:1;max-width:220px;}
-.district-bar select option{background:var(--bg3);}
-/* MAIN */
+.s-n.b{background:rgba(74,158,255,.15);color:var(--blue);}
 .main{padding:12px;display:flex;flex-direction:column;gap:10px;}
-.filter-row{display:flex;gap:5px;flex-wrap:wrap;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.tab-bar{display:flex;gap:2px;background:var(--bg3);border-radius:8px;padding:3px;margin-bottom:4px;}
+.tab{font-size:11px;padding:5px 12px;border-radius:6px;cursor:pointer;color:var(--text2);transition:all .15s;border:none;background:transparent;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.tab:hover{color:var(--text);}
+.tab.active{background:var(--bg2);color:var(--text);border:1px solid var(--border);}
+.filter-bar{display:flex;gap:5px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--border);}
 .chip{font-size:11px;padding:4px 11px;border-radius:20px;border:1px solid var(--border);color:var(--text2);cursor:pointer;transition:all .12s;background:transparent;font-family:'DM Sans',sans-serif;white-space:nowrap;}
 .chip:hover{border-color:var(--border2);color:var(--text);}
 .chip.on{background:var(--blue);border-color:var(--blue);color:#fff;}
-.chip.red.on{background:var(--red);border-color:var(--red);}
-.chip.grn.on{background:var(--green);border-color:var(--green);color:#000;}
-.chip.org.on{background:var(--orange);border-color:var(--orange);color:#000;}
-.live-lbl{font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px;font-weight:500;}
-/* EMERGENCY BANNER */
-.em-banner{background:linear-gradient(90deg,rgba(255,68,68,.18),transparent);border:1px solid rgba(255,68,68,.3);border-radius:9px;padding:10px 14px;display:flex;gap:10px;}
+.chip.ron.on{background:var(--red);border-color:var(--red);}
+.chip.gon.on{background:var(--green);border-color:var(--green);color:#000;}
+.chip.oon.on{background:var(--orange);border-color:var(--orange);color:#000;}
+.live-label{font-size:11px;color:var(--green);display:flex;align-items:center;gap:4px;font-weight:500;}
+.tag{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:500;white-space:nowrap;}
+.t-news{background:rgba(0,212,138,.1);color:#00e096;border:1px solid rgba(0,212,138,.18);}
+.t-reddit{background:rgba(255,100,0,.12);color:#ff7a44;border:1px solid rgba(255,100,0,.2);}
+.t-youtube{background:rgba(255,0,0,.12);color:#ff6b6b;border:1px solid rgba(255,0,0,.2);}
+.t-breaking{background:rgba(255,68,68,.15);color:#ff7070;border:1px solid rgba(255,68,68,.25);}
+.t-verified{background:rgba(0,212,138,.07);color:var(--green);border:1px solid rgba(0,212,138,.15);}
+.t-local{background:rgba(255,170,34,.12);color:var(--orange);border:1px solid rgba(255,170,34,.2);}
+.t-law{background:rgba(160,102,255,.12);color:#c499ff;border:1px solid rgba(160,102,255,.2);}
+.emergency{background:linear-gradient(90deg,rgba(255,68,68,.15),transparent);border:1px solid rgba(255,68,68,.25);border-radius:9px;padding:9px 13px;display:flex;gap:9px;align-items:flex-start;}
 .em-dot{width:8px;height:8px;border-radius:50%;background:var(--red);margin-top:4px;flex-shrink:0;animation:blink 1s infinite;}
-.em-list{flex:1;}
-.em-title{font-size:12px;font-weight:500;color:#ff8888;margin-bottom:4px;}
-.em-item{font-size:11px;color:var(--text2);padding:2px 0;display:flex;align-items:center;gap:6px;}
-.sev-high{color:var(--red);}
-.sev-medium{color:var(--orange);}
-.sev-low{color:var(--green);}
-/* CARD */
+.em-title{font-size:13px;font-weight:500;color:#ff8888;margin-bottom:2px;}
+.em-meta{font-size:11px;color:var(--text3);}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .15s,transform .1s;animation:fadeup .3s ease;}
 .card:hover{border-color:var(--border2);transform:translateY(-1px);}
 .card.brk{border-left:3px solid var(--red);}
-.card.law{border-left:3px solid var(--blue);}
-@keyframes fadeup{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.card.law{border-left:3px solid var(--purple);}
+.card.econ{border-left:3px solid var(--teal);}
+.card.yt{border-left:3px solid #ff4444;}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:7px;}
 .card-tags{display:flex;gap:4px;flex-wrap:wrap;flex:1;}
-.card-time{font-size:10px;color:var(--text3);white-space:nowrap;margin-top:2px;}
-.tag{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 7px;border-radius:4px;font-weight:500;white-space:nowrap;}
-.t-news{background:rgba(0,212,138,.1);color:#00e096;border:1px solid rgba(0,212,138,.18);}
-.t-reddit{background:rgba(255,100,0,.12);color:#ff7a44;border:1px solid rgba(255,100,0,.2);}
-.t-brk{background:rgba(255,68,68,.15);color:#ff7070;border:1px solid rgba(255,68,68,.25);}
-.t-ver{background:rgba(0,212,138,.07);color:var(--green);border:1px solid rgba(0,212,138,.15);}
-.t-law{background:rgba(160,102,255,.12);color:#c499ff;border:1px solid rgba(160,102,255,.2);}
-.t-dist{background:rgba(0,200,212,.1);color:var(--teal);border:1px solid rgba(0,200,212,.18);}
-.t-sc{background:rgba(255,170,34,.12);color:var(--orange);border:1px solid rgba(255,170,34,.2);}
-.card-row{display:flex;gap:12px;}
-.card-body{flex:1;}
-.card-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:4px;}
+.card-time{font-size:10px;color:var(--text3);white-space:nowrap;}
+.card-row{display:flex;gap:10px;align-items:flex-start;}
+.card-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:5px;}
 .card-title a{color:var(--text);text-decoration:none;}
 .card-title a:hover{color:var(--blue);}
 .snippet{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:6px;}
-.card-img{width:80px;height:60px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--bg3);}
+.card-img{width:78px;height:58px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--bg3);}
 .card-foot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .card-src{font-size:10px;color:var(--text3);}
-/* JOB/SCHEME CARD */
-.jcard{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px 15px;animation:fadeup .3s ease;transition:border-color .15s;}
-.jcard:hover{border-color:var(--border2);}
-.jcard.sc{border-left:3px solid var(--orange);}
-.jcard.foreign{border-left:3px solid var(--purple);}
-.jcard-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;}
-.jcard-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.4;flex:1;}
-.jcard-org{font-size:11px;color:var(--text3);margin-bottom:5px;}
-.jcard-benefit{font-size:12px;color:var(--green);margin-bottom:6px;line-height:1.5;}
-.jcard-eli{font-size:11px;color:var(--text2);}
-.jcard-foot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;}
-.deadline{font-size:10px;background:rgba(255,68,68,.12);color:var(--red);padding:2px 7px;border-radius:4px;}
-.apply-btn{font-size:11px;padding:4px 12px;background:rgba(74,158,255,.15);color:var(--blue);border:1px solid rgba(74,158,255,.25);border-radius:6px;cursor:pointer;text-decoration:none;font-family:'DM Sans',sans-serif;transition:all .15s;}
-.apply-btn:hover{background:rgba(74,158,255,.25);}
-/* LOADING */
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:50px;color:var(--text3);}
+.reddit-s{font-size:10px;color:var(--orange);}
+@keyframes fadeup{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:50px 20px;color:var(--text3);}
 .spinner{width:26px;height:26px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg)}}
-/* STATUS */
-.statusbar{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.statusbar{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.empty{text-align:center;padding:40px;color:var(--text3);}
+/* COURTS TAB */
+.court-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;}
+.court-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.court-meta{font-size:11px;color:var(--text3);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+.court-status{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:500;}
+.cs-high{background:rgba(255,68,68,.15);color:var(--red);}
+.cs-med{background:rgba(255,170,34,.15);color:var(--orange);}
+.cs-low{background:rgba(0,212,138,.1);color:var(--green);}
+/* WEATHER TAB */
+.weather-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+.weather-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;}
+.w-city{font-size:12px;color:var(--text3);margin-bottom:4px;}
+.w-temp{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:var(--text);}
+.w-cond{font-size:12px;color:var(--text2);margin:4px 0;}
+.w-row{display:flex;gap:12px;margin-top:8px;}
+.w-stat{font-size:11px;color:var(--text3);}
+.w-stat span{color:var(--text2);}
+.aqi-good{color:var(--green);}
+.aqi-mod{color:var(--orange);}
+.aqi-bad{color:var(--red);}
 /* RIGHT PANEL */
-.rpanel{background:var(--bg2);border-left:1px solid var(--border);padding:12px;position:sticky;top:108px;height:calc(100vh - 108px);overflow-y:auto;display:flex;flex-direction:column;gap:12px;}
+.rpanel{background:var(--bg2);border-left:1px solid var(--border);padding:12px;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;display:flex;flex-direction:column;gap:11px;}
 .rpanel::-webkit-scrollbar{width:2px;}
-.rpanel::-webkit-scrollbar-thumb{background:var(--border2);}
-.pbox{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 13px;}
-.pbox-ttl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:9px;}
-.pr-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px;}
-.pr-row:last-child{border-bottom:none;}
+.rpanel::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+.pbox{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 12px;}
+.pbox-title{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:9px;}
+.price-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:11.5px;}
+.price-row:last-child{border-bottom:none;}
 .pr-n{color:var(--text2);}
 .pr-v{font-weight:500;color:var(--text);}
 .pr-c{font-size:10px;padding:1px 5px;border-radius:4px;}
@@ -144,590 +132,396 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);height:52px;p
 .stat-box{background:var(--bg4);border-radius:7px;padding:9px;}
 .stat-n{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--text);}
 .stat-l{font-size:10px;color:var(--text3);margin-top:1px;}
-/* AI CHAT */
-.chat-panel{display:flex;flex-direction:column;gap:0;height:100%;}
-.chat-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:0;}
-.chat-msgs::-webkit-scrollbar{width:2px;}
-.chat-msgs::-webkit-scrollbar-thumb{background:var(--border2);}
-.msg{max-width:85%;border-radius:10px;padding:10px 13px;font-size:13px;line-height:1.6;animation:fadeup .2s ease;}
-.msg.user{background:rgba(74,158,255,.15);color:var(--text);margin-left:auto;border:1px solid rgba(74,158,255,.2);}
-.msg.bot{background:var(--bg3);color:var(--text2);border:1px solid var(--border);}
-.msg.bot strong{color:var(--text);}
-.chat-input-row{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:8px;background:var(--bg2);}
-.chat-input-row input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;}
-.chat-input-row input::placeholder{color:var(--text3);}
-.send-btn{background:var(--blue);border:none;border-radius:8px;padding:8px 14px;color:#fff;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .15s;white-space:nowrap;}
-.send-btn:hover{opacity:.85;}
-.send-btn:disabled{opacity:.4;cursor:not-allowed;}
-.chat-suggestions{padding:8px 12px;display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--border);}
-.sug{font-size:10px;padding:3px 9px;border-radius:12px;border:1px solid var(--border);color:var(--text3);cursor:pointer;transition:all .12s;}
-.sug:hover{border-color:var(--border2);color:var(--text2);}
+.ai-box{background:rgba(74,158,255,.05);border:1px solid rgba(74,158,255,.14);border-radius:8px;padding:9px 11px;}
+.ai-ttl{font-size:10px;color:var(--blue);letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;}
+.ai-p{font-size:11.5px;color:var(--text2);line-height:1.65;}
+.case-row{padding:7px 0;border-bottom:1px solid var(--border);}
+.case-row:last-child{border-bottom:none;}
+.case-n{font-size:12px;font-weight:500;color:var(--text);}
+.case-s{font-size:11px;color:var(--text3);margin:2px 0 4px;}
+.prog{height:3px;background:var(--bg4);border-radius:2px;}
+.prog-fill{height:100%;border-radius:2px;}
+.src-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;}
 /* MODAL */
-.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:20px;}
+.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.78);align-items:center;justify-content:center;padding:20px;}
 .overlay.show{display:flex;}
-.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:22px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;}
-.modal-close{float:right;background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer;margin:-4px -4px 0 0;}
-.modal h2{font-family:'Syne',sans-serif;font-size:16px;color:var(--text);margin:8px 0;line-height:1.4;}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:13px;padding:22px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;animation:fadeup .22s ease;}
+.modal-close{float:right;background:none;border:none;color:var(--text3);font-size:19px;cursor:pointer;margin-top:-4px;}
+.modal h2{font-family:'Syne',sans-serif;font-size:16px;color:var(--text);line-height:1.4;margin:10px 0 8px;}
 .modal p{font-size:13px;color:var(--text2);line-height:1.7;margin:8px 0;}
-.src-block{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;margin:10px 0;}
-.src-block .sb-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;}
-.src-block .sb-url{font-size:11px;color:var(--blue);word-break:break-all;margin-bottom:3px;}
-.src-block .sb-type{font-size:10px;color:var(--text3);}
-.modal-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:8px 16px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;text-decoration:none;}
-.empty{text-align:center;padding:40px 20px;color:var(--text3);}
-/* SECTION HEADER */
-.sec-hd{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);display:flex;align-items:center;gap:8px;}
-.sec-hd::after{content:'';flex:1;height:1px;background:var(--border);}
-/* HIDDEN PANEL */
-.panel-view{display:none;}
-.panel-view.active{display:flex;flex-direction:column;gap:10px;}
+.modal-tags{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0;}
+.source-block{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;margin:10px 0;}
+.sb-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;}
+.sb-url{font-size:11px;color:var(--blue);word-break:break-all;margin-bottom:2px;}
+.sb-type{font-size:10px;color:var(--text3);}
+.modal-btn{display:inline-flex;align-items:center;gap:5px;margin-top:11px;padding:8px 16px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;text-decoration:none;}
 @media(max-width:900px){.layout{grid-template-columns:1fr;}.sidebar,.rpanel{display:none;}}
 </style>
 </head>
 <body>
-
-<div class="ticker">
-  <div class="ticker-lbl">&#9632; LIVE</div>
-  <div class="ticker-scroll"><div class="ticker-inner" id="ticker-inner">
-    <span>Loading live headlines...</span><span>BharatPulse v2 — Karnataka + India News + SC Schemes + Govt Jobs</span>
-    <span>Loading live headlines...</span><span>BharatPulse v2 — Karnataka + India News + SC Schemes + Govt Jobs</span>
-  </div></div>
-</div>
+<div class="ticker"><div class="ticker-lbl">&#9632; LIVE</div><div class="ticker-scroll"><div class="ticker-inner" id="ticker">
+  <span>Loading live headlines from 30+ Indian sources...</span><span>BharatPulse v2 — News · Courts · Prices · Weather · Crime · Reddit</span>
+  <span>Loading live headlines from 30+ Indian sources...</span><span>BharatPulse v2 — News · Courts · Prices · Weather · Crime · Reddit</span>
+</div></div></div>
 
 <header>
-  <a href="/" class="logo"><div class="logo-ic">🇮🇳</div>Bharat<em>Pulse</em></a>
-  <div class="srch">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-    <input type="text" id="search" placeholder="Search news, jobs, schemes, laws, districts...">
-  </div>
-  <div class="hdr-r">
-    <div class="live-chip"><div class="dot"></div><span id="loc-txt">Bengaluru, KA</span></div>
-    <button class="hbtn" id="chat-toggle" onclick="toggleChat()">🤖 AI Ask</button>
-    <button class="hbtn" onclick="refresh()"><span id="spin-ic">↻</span> Refresh</button>
+  <a href="/" class="logo"><div class="logo-icon">🇮🇳</div>Bharat<em>Pulse</em></a>
+  <div class="searchbox"><span class="search-ico">⌕</span><input type="text" id="search" placeholder="Search news, laws, courts, prices, states..."></div>
+  <div class="hdr-right">
+    <div class="loc-chip"><div class="dot"></div><span id="loc-txt">Bengaluru, KA</span></div>
+    <button class="hbtn" onclick="refresh()"><span id="spin-ico">↻</span> Refresh</button>
   </div>
 </header>
 
-<div class="tabs" id="main-tabs">
-  <div class="tab active" onclick="switchTab('news',this)">📰 Live News</div>
-  <div class="tab red" onclick="switchTab('breaking',this)">🔴 Breaking</div>
-  <div class="tab grn" onclick="switchTab('karnataka',this)">📍 Karnataka</div>
-  <div class="tab" onclick="switchTab('jobs',this)">💼 Govt Jobs</div>
-  <div class="tab org" onclick="switchTab('schemes',this)">🎯 SC Schemes</div>
-  <div class="tab purp" onclick="switchTab('foreign',this)">🌏 Foreign Opp.</div>
-  <div class="tab" onclick="switchTab('chat',this)">🤖 AI Agent</div>
-</div>
-
 <div class="layout">
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="s-hd">Feeds</div>
-    <div class="s-item active" onclick="navSide(this,'all')"><span class="s-ico">◈</span>All India<span class="s-n r" id="cnt-all">—</span></div>
-    <div class="s-item" onclick="navSide(this,'breaking')"><span class="s-ico">🔴</span>Breaking<span class="s-n r" id="cnt-brk">—</span></div>
-    <div class="s-item" onclick="navSide(this,'reddit')"><span class="s-ico">↑</span>Reddit India</div>
-    <div class="s-item" onclick="navSide(this,'verified')"><span class="s-ico">✓</span>Verified Only</div>
-    <div class="s-hd">Karnataka</div>
-    <div class="s-item" onclick="navSide(this,'karnataka')"><span class="s-ico">🏛</span>KA State News</div>
-    <div class="s-item" onclick="navSide(this,'district')"><span class="s-ico">📍</span>By District</div>
-    <div class="s-hd">Topics</div>
-    <div class="s-item" onclick="navSide(this,'economy')"><span class="s-ico">₹</span>Economy</div>
-    <div class="s-item" onclick="navSide(this,'climate')"><span class="s-ico">☁</span>Climate</div>
-    <div class="s-item" onclick="navSide(this,'national')"><span class="s-ico">🏛</span>National</div>
-    <div class="s-item" onclick="navSide(this,'court')"><span class="s-ico">⚖</span>Courts & Laws</div>
-    <div class="s-hd">Opportunities</div>
-    <div class="s-item" onclick="switchTab('jobs',null)"><span class="s-ico">💼</span>Govt Jobs<span class="s-n g">17</span></div>
-    <div class="s-item" onclick="switchTab('schemes',null)"><span class="s-ico">🎯</span>SC Schemes<span class="s-n g">12</span></div>
-    <div class="s-item" onclick="switchTab('foreign',null)"><span class="s-ico">🌏</span>Foreign Opp.</div>
+<div class="sidebar">
+  <div class="s-hd">Feeds</div>
+  <div class="s-item active" onclick="nav(this,'all')"><span class="s-ico">◈</span>All India<span class="s-n r" id="cnt-all">—</span></div>
+  <div class="s-item" onclick="nav(this,'breaking')"><span class="s-ico">🔴</span>Breaking<span class="s-n r" id="cnt-brk">—</span></div>
+  <div class="s-item" onclick="nav(this,'reddit')"><span class="s-ico">↑</span>Reddit India<span class="s-n b" id="cnt-red">—</span></div>
+  <div class="s-item" onclick="nav(this,'youtube')"><span class="s-ico">▶</span>YouTube News</div>
+  <div class="s-item" onclick="nav(this,'laws')"><span class="s-ico">⚖</span>Law Tagged</div>
+  <div class="s-hd">Topics</div>
+  <div class="s-item" onclick="nav(this,'national')"><span class="s-ico">🏛</span>National</div>
+  <div class="s-item" onclick="nav(this,'economy')"><span class="s-ico">₹</span>Economy</div>
+  <div class="s-item" onclick="nav(this,'climate')"><span class="s-ico">🌱</span>Climate</div>
+  <div class="s-item" onclick="nav(this,'crime')"><span class="s-ico">🚨</span>Crime</div>
+  <div class="s-item" onclick="nav(this,'health')"><span class="s-ico">🏥</span>Health</div>
+  <div class="s-item" onclick="nav(this,'tech')"><span class="s-ico">💻</span>Technology</div>
+  <div class="s-item" onclick="nav(this,'sports')"><span class="s-ico">🏏</span>Sports</div>
+  <div class="s-item" onclick="nav(this,'entertainment')"><span class="s-ico">🎬</span>Entertainment</div>
+  <div class="s-hd">States</div>
+  <div class="s-item" onclick="navState('Karnataka')"><span class="s-ico">▸</span>Karnataka</div>
+  <div class="s-item" onclick="navState('Maharashtra')"><span class="s-ico">▸</span>Maharashtra</div>
+  <div class="s-item" onclick="navState('Tamil Nadu')"><span class="s-ico">▸</span>Tamil Nadu</div>
+  <div class="s-item" onclick="navState('Delhi')"><span class="s-ico">▸</span>Delhi</div>
+  <div class="s-item" onclick="navState('Telangana')"><span class="s-ico">▸</span>Telangana</div>
+  <div class="s-item" onclick="navState('Kerala')"><span class="s-ico">▸</span>Kerala</div>
+  <div class="s-item" onclick="navState('West Bengal')"><span class="s-ico">▸</span>West Bengal</div>
+  <div class="s-item" onclick="navState('Gujarat')"><span class="s-ico">▸</span>Gujarat</div>
+  <div class="s-item" onclick="navState('Uttar Pradesh')"><span class="s-ico">▸</span>Uttar Pradesh</div>
+  <div class="s-item" onclick="navState('Punjab')"><span class="s-ico">▸</span>Punjab</div>
+  <div class="s-item" onclick="navState('Rajasthan')"><span class="s-ico">▸</span>Rajasthan</div>
+  <div class="s-item" onclick="navState('Bihar')"><span class="s-ico">▸</span>Bihar</div>
+  <div class="s-item" onclick="nav(this,'all')"><span class="s-ico">◉</span>All States<span class="s-n b">28+</span></div>
+</div>
+
+<div class="main">
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab(this,'news')">📰 News Feed</button>
+    <button class="tab" onclick="switchTab(this,'courts')">⚖ Courts</button>
+    <button class="tab" onclick="switchTab(this,'weather')">☁ Weather</button>
+    <button class="tab" onclick="switchTab(this,'prices')">₹ Prices</button>
+    <button class="tab" onclick="switchTab(this,'sources')">📡 Sources</button>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main" id="main-content">
-
-    <!-- NEWS VIEW -->
-    <div class="panel-view active" id="view-news">
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <div class="district-bar" style="border:none;padding:0;background:transparent;flex:1;min-width:200px;">
-          <label>📍 District:</label>
-          <select id="district-sel" onchange="applyFilter()">
-            <option value="">All Karnataka</option>
-          </select>
-        </div>
-        <div class="filter-row" style="border:none;padding:0;">
-          <span class="live-lbl"><div class="dot"></div>Live</span>
-          <span class="chip on" onclick="chip(this,'all')">All</span>
-          <span class="chip" onclick="chip(this,'national')">National</span>
-          <span class="chip red" onclick="chip(this,'breaking')">Breaking</span>
-          <span class="chip grn" onclick="chip(this,'verified')">Verified</span>
-          <span class="chip" onclick="chip(this,'court')">Courts</span>
-          <span class="chip org" onclick="chip(this,'economy')">Economy</span>
-          <span class="chip" onclick="chip(this,'reddit')">Reddit</span>
-        </div>
-      </div>
-      <div id="emergency-zone"></div>
-      <div class="statusbar"><span id="status-txt">Loading...</span></div>
-      <div id="news-feed"></div>
+  <!-- NEWS TAB -->
+  <div id="tab-news">
+    <div class="filter-bar">
+      <span class="live-label"><div class="dot"></div>Live</span>
+      <span class="chip on" onclick="chip(this,'all')">All</span>
+      <span class="chip" onclick="chip(this,'national')">National</span>
+      <span class="chip ron" onclick="chip(this,'breaking')">Breaking</span>
+      <span class="chip gon" onclick="chip(this,'verified')">Verified</span>
+      <span class="chip" onclick="chip(this,'reddit')">Reddit</span>
+      <span class="chip" onclick="chip(this,'youtube')">YouTube</span>
+      <span class="chip oon" onclick="chip(this,'laws')">Law Tagged</span>
+      <span class="chip" onclick="chip(this,'economy')">Economy</span>
+      <span class="chip" onclick="chip(this,'climate')">Climate</span>
+      <span class="chip" onclick="chip(this,'sports')">Sports</span>
+      <span class="chip" onclick="chip(this,'health')">Health</span>
     </div>
-
-    <!-- JOBS VIEW -->
-    <div class="panel-view" id="view-jobs">
-      <div class="filter-row">
-        <span class="chip on" onclick="jobChip(this,'all')">All Jobs</span>
-        <span class="chip" onclick="jobChip(this,'karnataka')">Karnataka</span>
-        <span class="chip" onclick="jobChip(this,'central')">Central Govt</span>
-        <span class="chip" onclick="jobChip(this,'railway')">Railway</span>
-        <span class="chip org" onclick="jobChip(this,'sc_only')">SC Priority</span>
-        <span class="chip" onclick="jobChip(this,'10th')">10th Pass</span>
-        <span class="chip" onclick="jobChip(this,'puc')">PUC/12th Pass</span>
-      </div>
-      <div id="jobs-feed"></div>
-    </div>
-
-    <!-- SCHEMES VIEW -->
-    <div class="panel-view" id="view-schemes">
-      <div class="filter-row">
-        <span class="chip on" onclick="schemeChip(this,'all')">All Schemes</span>
-        <span class="chip" onclick="schemeChip(this,'training')">Free Training</span>
-        <span class="chip" onclick="schemeChip(this,'scholarship')">Scholarships</span>
-        <span class="chip" onclick="schemeChip(this,'coaching')">Free Coaching</span>
-        <span class="chip" onclick="schemeChip(this,'loan')">Loans</span>
-        <span class="chip" onclick="schemeChip(this,'housing')">Housing</span>
-        <span class="chip" onclick="schemeChip(this,'education')">Education</span>
-      </div>
-      <div id="schemes-feed"></div>
-    </div>
-
-    <!-- FOREIGN VIEW -->
-    <div class="panel-view" id="view-foreign">
-      <div id="foreign-feed"></div>
-    </div>
-
-    <!-- CHAT VIEW -->
-    <div class="panel-view" id="view-chat" style="height:calc(100vh - 180px);">
-      <div class="chat-panel" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;height:100%;">
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:8px;">
-          <div style="width:28px;height:28px;background:rgba(74,158,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;">🤖</div>
-          <div>
-            <div style="font-size:13px;font-weight:500;color:var(--text);">BharatPulse AI Agent</div>
-            <div style="font-size:10px;color:var(--green);">● Active — Ask anything about Karnataka news, SC schemes, jobs</div>
-          </div>
-        </div>
-        <div class="chat-msgs" id="chat-msgs">
-          <div class="msg bot">👋 <strong>Namaskara!</strong> I am your BharatPulse AI assistant.<br><br>I can help you with:<br>• Karnataka SC/ST schemes (drone training, free software training, scholarships)<br>• Government jobs (KPSC, ISRO, Railways, Police, BESCOM, Forest Dept)<br>• Foreign scholarships for SC candidates<br>• Latest Karnataka and India news<br>• Your legal rights<br><br>What would you like to know?</div>
-        </div>
-        <div class="chat-suggestions">
-          <span class="sug" onclick="askSug(this)">Free drone training for SC</span>
-          <span class="sug" onclick="askSug(this)">KPSC 2026 jobs</span>
-          <span class="sug" onclick="askSug(this)">Scholarship for SC students</span>
-          <span class="sug" onclick="askSug(this)">Foreign scholarship SC</span>
-          <span class="sug" onclick="askSug(this)">Latest Karnataka news</span>
-          <span class="sug" onclick="askSug(this)">10th pass govt jobs</span>
-        </div>
-        <div class="chat-input-row">
-          <input type="text" id="chat-in" placeholder="Ask about news, schemes, jobs, laws..." onkeydown="if(event.key==='Enter')sendChat()">
-          <button class="send-btn" id="send-btn" onclick="sendChat()">Send ↗</button>
-        </div>
-      </div>
-    </div>
-
+    <div id="emergency-zone"></div>
+    <div class="statusbar"><span id="status-txt">Connecting to 30+ sources...</span></div>
+    <div id="feed"><div class="loading"><div class="spinner"></div><div>Fetching from 30+ Indian sources + Reddit + YouTube...</div></div></div>
   </div>
 
-  <!-- RIGHT PANEL -->
-  <div class="rpanel" id="rpanel">
-    <div class="pbox">
-      <div class="pbox-ttl">🚨 Emergency Alerts</div>
-      <div id="emergency-panel"><div style="font-size:11px;color:var(--text3)">Loading...</div></div>
-    </div>
-    <div class="pbox" id="price-box">
-      <div class="pbox-ttl">💹 Live Prices</div>
-      <div class="loading" style="padding:15px"><div class="spinner"></div></div>
-    </div>
-    <div class="pbox">
-      <div class="pbox-ttl">🚔 Crime Stats · KA</div>
-      <div class="stat-grid">
-        <div class="stat-box"><div class="stat-n" id="st1">—</div><div class="stat-l">FIRs today</div></div>
-        <div class="stat-box"><div class="stat-n" id="st2">—</div><div class="stat-l">Active cases</div></div>
-        <div class="stat-box"><div class="stat-n" id="st3">—</div><div class="stat-l">POCSO open</div></div>
-        <div class="stat-box"><div class="stat-n" id="st4">—</div><div class="stat-l">Resolved %</div></div>
-      </div>
-    </div>
-    <div style="background:rgba(255,170,34,.06);border:1px solid rgba(255,170,34,.2);border-radius:10px;padding:11px 13px;">
-      <div class="pbox-ttl" style="color:var(--orange);">🎯 Quick SC Links</div>
-      <div style="display:flex;flex-direction:column;gap:5px;">
-        <a href="https://kscstdc.karnataka.gov.in" target="_blank" style="font-size:11px;color:var(--orange);text-decoration:none;">→ KA SC/ST Dev Corporation</a>
-        <a href="https://scstdept.karnataka.gov.in" target="_blank" style="font-size:11px;color:var(--orange);text-decoration:none;">→ SC Welfare Dept Karnataka</a>
-        <a href="https://nosmsje.gov.in" target="_blank" style="font-size:11px;color:var(--orange);text-decoration:none;">→ National Overseas Scholarship</a>
-        <a href="https://kpsc.kar.nic.in" target="_blank" style="font-size:11px;color:var(--orange);text-decoration:none;">→ KPSC Official Site</a>
-        <a href="https://sw.kar.nic.in" target="_blank" style="font-size:11px;color:var(--orange);text-decoration:none;">→ Karnataka SC Scholarship</a>
-      </div>
-    </div>
-    <div class="pbox">
-      <div class="pbox-ttl">📡 Sources Live</div>
-      <div id="sources-box" style="font-size:11px;color:var(--text3);line-height:1.9;"></div>
-    </div>
+  <!-- COURTS TAB -->
+  <div id="tab-courts" style="display:none;">
+    <div class="statusbar" style="margin-bottom:10px;"><span style="color:var(--purple)">⚖ Live court cases — Supreme Court, High Courts, NGT</span></div>
+    <div id="courts-list"><div class="loading"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- WEATHER TAB -->
+  <div id="tab-weather" style="display:none;">
+    <div class="statusbar" style="margin-bottom:10px;"><span>☁ Weather across major Indian cities</span></div>
+    <div class="weather-grid" id="weather-grid"><div class="loading"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- PRICES TAB -->
+  <div id="tab-prices" style="display:none;">
+    <div class="statusbar" style="margin-bottom:10px;"><span>₹ Live price tracker — fuel, essentials, groceries</span></div>
+    <div id="prices-list"><div class="loading"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- SOURCES TAB -->
+  <div id="tab-sources" style="display:none;">
+    <div class="statusbar" style="margin-bottom:10px;"><span>📡 All active news sources with verification status</span></div>
+    <div id="sources-list-full"></div>
   </div>
 </div>
 
-<!-- MODAL -->
+<div class="rpanel">
+  <div class="pbox" id="price-box"><div class="pbox-title">💹 Prices</div><div class="loading" style="padding:15px"><div class="spinner"></div></div></div>
+  <div class="pbox">
+    <div class="pbox-title">🚔 Crime Stats</div>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="stat-n" id="st1">—</div><div class="stat-l">FIRs today</div></div>
+      <div class="stat-box"><div class="stat-n" id="st2">—</div><div class="stat-l">Active cases</div></div>
+      <div class="stat-box"><div class="stat-n" id="st3">—</div><div class="stat-l">POCSO open</div></div>
+      <div class="stat-box"><div class="stat-n" id="st4">—</div><div class="stat-l">Cybercrime</div></div>
+    </div>
+  </div>
+  <div class="pbox" id="weather-mini"><div class="pbox-title">☁ Weather</div><div style="font-size:11px;color:var(--text3)">Loading...</div></div>
+  <div class="ai-box"><div class="ai-ttl">⚡ AI Prediction</div><p class="ai-p" id="ai-txt">Analyzing patterns...</p></div>
+  <div class="pbox">
+    <div class="pbox-title">⚖ Tracked Cases</div>
+    <div class="case-row"><div class="case-n">Electoral Bonds — SC</div><div class="case-s">Compliance Review · Apr 2026</div><div class="prog"><div class="prog-fill" style="width:80%;background:var(--red)"></div></div></div>
+    <div class="case-row"><div class="case-n">BBMP Water — KA HC</div><div class="case-s">Next: 22 Mar 2026</div><div class="prog"><div class="prog-fill" style="width:35%;background:var(--orange)"></div></div></div>
+    <div class="case-row"><div class="case-n">Bellandur Lake — NGT</div><div class="case-s">Monthly monitoring</div><div class="prog"><div class="prog-fill" style="width:60%;background:var(--blue)"></div></div></div>
+    <div class="case-row"><div class="case-n">NEET TN Quota — HC</div><div class="case-s">Hearing ongoing</div><div class="prog"><div class="prog-fill" style="width:45%;background:var(--purple)"></div></div></div>
+  </div>
+  <div class="pbox">
+    <div class="pbox-title">📡 Sources Live</div>
+    <div id="src-mini" style="font-size:11px;color:var(--text3);">Loading...</div>
+  </div>
+</div>
+</div>
+
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
+  <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modal-tags" style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;"></div>
+    <div id="modal-tags" class="modal-tags"></div>
     <h2 id="modal-title"></h2>
     <p id="modal-snippet"></p>
-    <div id="modal-laws" style="display:flex;gap:5px;flex-wrap:wrap;margin:8px 0;"></div>
-    <div id="modal-src"></div>
+    <div id="modal-laws" class="modal-tags"></div>
+    <div id="modal-source"></div>
     <a id="modal-link" href="#" target="_blank" class="modal-btn">Read Full Article →</a>
   </div>
 </div>
 
 <script>
-const API = window.location.origin + '/api';
-let ALL = [], FILTERED = [], currentFilter = 'all', currentDistrict = '', chatHistory = [], currentTab = 'news';
+const API = window.location.origin+'/api';
+let ALL=[], FILTERED=[], curFilter='all', curState=null, curTab='news';
 
-// ─── Location ──────────────────────────────────────────────
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(pos => {
+// Location
+if(navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(pos=>{
     fetch(`https://nominatim.openstreetmap.org/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&format=json`)
-      .then(r=>r.json()).then(d => {
-        const city = d.address.city||d.address.town||'City';
-        const state = d.address.state||'India';
-        document.getElementById('loc-txt').textContent = city+', '+state.substring(0,2).toUpperCase();
+      .then(r=>r.json()).then(d=>{
+        const city=d.address.city||d.address.town||'City';
+        const state=d.address.state||'India';
+        document.getElementById('loc-txt').textContent=city+', '+state.substring(0,2).toUpperCase();
       }).catch(()=>{});
   },()=>{});
 }
 
-// ─── Districts ─────────────────────────────────────────────
-async function loadDistricts() {
-  try {
-    const r = await fetch(`${API}/districts`);
-    const d = await r.json();
-    const sel = document.getElementById('district-sel');
-    (d.districts||[]).forEach(dist => {
-      const opt = document.createElement('option');
-      opt.value = dist; opt.textContent = dist;
-      sel.appendChild(opt);
-    });
-  } catch(e){}
+function ptag(a){
+  if(a.platform==='reddit') return `<span class="tag t-reddit">↑ ${a.source}</span>`;
+  if(a.platform==='youtube') return `<span class="tag t-youtube">▶ ${a.source}</span>`;
+  return `<span class="tag t-news">📰 ${a.source}</span>`;
 }
 
-// ─── News ──────────────────────────────────────────────────
-async function loadNews() {
-  document.getElementById('news-feed').innerHTML = '<div class="loading"><div class="spinner"></div><div>Loading from 15+ sources...</div></div>';
-  document.getElementById('status-txt').textContent = 'Fetching news...';
-  try {
-    const r = await fetch(`${API}/news`);
-    const d = await r.json();
-    ALL = d.articles || [];
-    FILTERED = [...ALL];
-    renderNews(FILTERED);
-    updateTicker(ALL);
-    renderSources(ALL);
-    document.getElementById('cnt-all').textContent = ALL.length;
-    document.getElementById('cnt-brk').textContent = ALL.filter(a=>a.isBreaking).length;
-    const now = new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-    document.getElementById('status-txt').innerHTML = `<span style="color:var(--green)">✓</span> ${ALL.length} articles · ${[...new Set(ALL.map(a=>a.source))].length} sources · ${now}`;
-    checkEmergencyNews(ALL);
-  } catch(e) {
-    document.getElementById('news-feed').innerHTML = '<div class="empty">Could not load news. Check your connection.</div>';
-  }
-}
-
-function ptag(a) {
-  return a.platform==='reddit' ? `<span class="tag t-reddit">↑ ${a.source}</span>` : `<span class="tag t-news">📰 ${a.source}</span>`;
-}
-
-function renderNewsCard(a) {
-  const laws = (a.laws||[]).map(l=>`<span class="tag t-law">⚖ ${l}</span>`).join('');
-  const brk = a.isBreaking ? `<span class="tag t-brk">🔴 Breaking</span>` : '';
-  const ver = a.verified ? `<span class="tag t-ver">✓ Verified</span>` : '';
-  const dist = a.district ? `<span class="tag t-dist">📍 ${a.district}</span>` : '';
-  const img = a.image ? `<img class="card-img" src="${a.image}" onerror="this.style.display='none'" loading="lazy">` : '';
-  const score = a.score!=null ? `<span style="font-size:10px;color:var(--orange)">▲${a.score}</span>` : '';
-  return `<div class="card ${a.isBreaking?'brk':(a.laws||[]).length?'law':''}" onclick='openModal(${JSON.stringify(a).replace(/'/g,"&#39;")})'>
-    <div class="card-top"><div class="card-tags">${ptag(a)}${brk}${ver}${dist}</div><span class="card-time">${a.time}</span></div>
-    <div class="card-row"><div class="card-body">
+function renderCard(a){
+  const laws=(a.laws||[]).map(l=>`<span class="tag t-law">⚖ ${l}</span>`).join('');
+  const brk=a.isBreaking?`<span class="tag t-breaking">🔴 Breaking</span>`:'';
+  const ver=a.verified?`<span class="tag t-verified">✓ Verified</span>`:'';
+  const loc=(a.state&&a.state!=='India')?`<span class="tag t-local">📍 ${a.state}</span>`:'';
+  const img=a.image?`<img class="card-img" src="${a.image}" onerror="this.style.display='none'" loading="lazy">`:'';
+  const cls=a.platform==='youtube'?'yt':a.isBreaking?'brk':(a.laws||[]).length?'law':a.category==='economy'?'econ':'';
+  const score=a.score!=null?`<span class="reddit-s">▲${a.score} · 💬${a.comments}</span>`:'';
+  return `<div class="card ${cls}" onclick='openModal(${JSON.stringify(a).replace(/'/g,"&#39;")})'>
+    <div class="card-top"><div class="card-tags">${ptag(a)}${brk}${ver}${loc}</div><span class="card-time">${a.time}</span></div>
+    <div class="card-row"><div style="flex:1">
       <div class="card-title"><a href="${a.url}" target="_blank" onclick="event.stopPropagation()">${a.title}</a></div>
-      ${a.snippet?`<div class="snippet">${a.snippet}</div>`:''}
+      ${a.snippet?`<div class="snippet">${a.snippet.substring(0,160)}</div>`:''}
     </div>${img}</div>
     <div class="card-foot">${laws}${score}<span class="card-src">Source: ${a.source} · ${a.platform.toUpperCase()}</span></div>
   </div>`;
 }
 
-function renderNews(articles) {
-  const el = document.getElementById('news-feed');
-  if (!articles.length) { el.innerHTML = '<div class="empty">No articles found for this filter.</div>'; return; }
-  el.innerHTML = articles.slice(0,50).map(renderNewsCard).join('');
+function renderFeed(arr){
+  const el=document.getElementById('feed');
+  if(!arr.length){el.innerHTML=`<div class="empty">📡 No articles found.<br><span style="font-size:12px">Try a different filter.</span></div>`;return;}
+  el.innerHTML=arr.slice(0,60).map(renderCard).join('');
 }
 
-// ─── Jobs ──────────────────────────────────────────────────
-async function loadJobs(subcat='', sc_only='', q='') {
-  document.getElementById('jobs-feed').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-  try {
-    let url = `${API}/jobs?`;
-    if (subcat && subcat !== 'all' && subcat !== 'sc_only' && subcat !== '10th' && subcat !== 'puc') url += `subcat=${subcat}&`;
-    if (sc_only || subcat==='sc_only') url += 'sc_only=1&';
-    if (q) url += `q=${encodeURIComponent(q)}&`;
-    if (subcat==='10th') url += 'q=10th&';
-    if (subcat==='puc') url += 'q=PUC&';
-    const r = await fetch(url);
-    const d = await r.json();
-    renderJobs(d.jobs||[]);
-  } catch(e) { document.getElementById('jobs-feed').innerHTML = '<div class="empty">Could not load jobs.</div>'; }
+function applyFilter(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  let r=[...ALL];
+  if(curState) r=r.filter(a=>a.state===curState||a.state==='India');
+  if(curFilter==='all'){}
+  else if(curFilter==='breaking') r=r.filter(a=>a.isBreaking);
+  else if(curFilter==='verified') r=r.filter(a=>a.verified);
+  else if(curFilter==='reddit') r=r.filter(a=>a.platform==='reddit');
+  else if(curFilter==='youtube') r=r.filter(a=>a.platform==='youtube');
+  else if(curFilter==='laws') r=r.filter(a=>(a.laws||[]).length>0);
+  else r=r.filter(a=>a.category===curFilter||a.platform===curFilter);
+  if(q) r=r.filter(a=>a.title.toLowerCase().includes(q)||(a.snippet||'').toLowerCase().includes(q)||a.source.toLowerCase().includes(q)||(a.laws||[]).some(l=>l.toLowerCase().includes(q))||(a.state||'').toLowerCase().includes(q));
+  FILTERED=r; renderFeed(FILTERED);
 }
 
-function renderJobs(jobs) {
-  if (!jobs.length) { document.getElementById('jobs-feed').innerHTML = '<div class="empty">No jobs found for this filter.</div>'; return; }
-  document.getElementById('jobs-feed').innerHTML = jobs.map(j => `
-    <div class="jcard ${j.sc_benefit?'sc':''} ${j.subcat==='foreign'?'foreign':''}">
-      <div class="jcard-head">
-        <div class="jcard-title">${j.title}</div>
-        ${j.sc_benefit?'<span class="tag t-sc">SC Priority</span>':''}
-      </div>
-      <div class="jcard-org">🏛 ${j.org} ${j.state!=='India'?'· '+j.state:''}</div>
-      <div class="jcard-eli">📋 Eligibility: ${j.eligibility}</div>
-      <div class="jcard-foot">
-        <span class="deadline">⏰ Deadline: ${j.deadline}</span>
-        <a href="${j.url}" target="_blank" class="apply-btn">Apply / Know More →</a>
-      </div>
-    </div>`).join('');
-}
+function chip(el,f){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');curFilter=f;curState=null;applyFilter();}
+function nav(el,f){document.querySelectorAll('.s-item').forEach(s=>s.classList.remove('active'));el.classList.add('active');curFilter=f;curState=null;applyFilter();}
+function navState(s){curState=s;curFilter='all';applyFilter();document.querySelectorAll('.s-item').forEach(x=>x.classList.remove('active'));}
+document.getElementById('search').addEventListener('input',applyFilter);
 
-// ─── Schemes ───────────────────────────────────────────────
-async function loadSchemes(subcat='', q='') {
-  const target = document.getElementById('schemes-feed') || document.getElementById('foreign-feed');
-  if (target) target.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-  try {
-    let url = `${API}/schemes?`;
-    if (subcat && subcat!=='all') url += `subcat=${subcat}&`;
-    if (q) url += `q=${encodeURIComponent(q)}&`;
-    const r = await fetch(url);
-    const d = await r.json();
-    const html = (d.schemes||[]).map(s => `
-      <div class="jcard sc">
-        <div class="jcard-title">${s.title}</div>
-        <div class="jcard-org">🏛 ${s.org}</div>
-        <div class="jcard-benefit">✅ Benefit: ${s.benefit}</div>
-        <div class="jcard-eli">📋 Eligibility: ${s.eligibility}</div>
-        <div class="jcard-foot">
-          <a href="${s.url}" target="_blank" class="apply-btn">Apply / Know More →</a>
-        </div>
-      </div>`).join('');
-    const el = document.getElementById(currentTab==='foreign'?'foreign-feed':'schemes-feed');
-    if (el) el.innerHTML = html || '<div class="empty">No schemes found.</div>';
-  } catch(e) {}
-}
-
-async function loadForeign() {
-  document.getElementById('foreign-feed').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-  try {
-    const [jr, sr] = await Promise.all([fetch(`${API}/jobs?subcat=foreign`), fetch(`${API}/schemes?subcat=foreign`)]);
-    const jd = await jr.json();
-    const sd = await sr.json();
-    const jobHtml = (jd.jobs||[]).map(j=>`<div class="jcard foreign"><div class="jcard-title">${j.title}</div><div class="jcard-org">🌏 ${j.org}</div><div class="jcard-eli">📋 ${j.eligibility}</div><div class="jcard-foot"><span class="deadline">⏰ ${j.deadline}</span><a href="${j.url}" target="_blank" class="apply-btn">Apply →</a></div></div>`).join('');
-    const schHtml = (sd.schemes||[]).map(s=>`<div class="jcard foreign"><div class="jcard-title">${s.title}</div><div class="jcard-org">🌏 ${s.org}</div><div class="jcard-benefit">✅ ${s.benefit}</div><div class="jcard-eli">📋 ${s.eligibility}</div><div class="jcard-foot"><a href="${s.url}" target="_blank" class="apply-btn">Apply →</a></div></div>`).join('');
-    document.getElementById('foreign-feed').innerHTML = `
-      <div class="sec-hd">Foreign Jobs & Fellowships</div><br>${jobHtml}
-      <br><div class="sec-hd">Foreign Scholarships for SC</div><br>${schHtml}`;
-  } catch(e){}
-}
-
-// ─── Prices & Stats ────────────────────────────────────────
-async function loadPrices() {
-  try {
-    const r = await fetch(`${API}/prices`);
-    const d = await r.json();
-    document.getElementById('price-box').innerHTML = `<div class="pbox-ttl">💹 Live Prices</div>` +
-      (d.prices||[]).map(p=>`<div class="pr-row"><span class="pr-n">${p.name}</span><span class="pr-v">${p.value}</span><span class="pr-c ${p.trend==='up'?'up':p.trend==='down'?'dn':'fl'}">${p.change}</span></div>`).join('');
-  } catch(e){}
-}
-
-async function loadStats() {
-  try {
-    const r = await fetch(`${API}/stats`);
-    const d = await r.json();
-    document.getElementById('st1').textContent = d.bengaluru?.firs_today||'—';
-    document.getElementById('st2').textContent = d.bengaluru?.active_cases||'—';
-    document.getElementById('st3').textContent = d.bengaluru?.pocso_open||'—';
-    document.getElementById('st4').textContent = (d.bengaluru?.resolved_pct||'—') + (d.bengaluru?.resolved_pct?'%':'');
-    const em = d.emergency;
-    if (em) {
-      document.getElementById('emergency-panel').innerHTML = `
-        <div style="font-size:11px;color:var(--red);margin-bottom:6px;font-weight:500;">● ${em.active} active alerts</div>` +
-        (em.recent||[]).map(e=>`<div class="em-item"><span class="sev-${e.severity}">●</span>${e.type} — ${e.location} <span style="color:var(--text3)">${e.time}</span></div>`).join('');
-    }
-  } catch(e){}
-}
-
-function checkEmergencyNews(articles) {
-  const brk = articles.find(a=>a.isBreaking);
-  document.getElementById('emergency-zone').innerHTML = brk ? `
-    <div class="em-banner">
-      <div class="em-dot"></div>
-      <div class="em-list">
-        <div class="em-title">🔴 Breaking — ${brk.source}</div>
-        <div style="font-size:12px;color:var(--text2)">${brk.title} · ${brk.time}</div>
-      </div>
-    </div>` : '';
-}
-
-function updateTicker(articles) {
-  const items = articles.slice(0,20).map(a=>`<span>${a.title}</span>`);
-  document.getElementById('ticker-inner').innerHTML = [...items,...items].join('');
-}
-
-function renderSources(articles) {
-  const sources = [...new Set(articles.map(a=>a.source))];
-  document.getElementById('sources-box').innerHTML = sources.map(s=>`<div style="display:flex;align-items:center;gap:5px"><div style="width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0"></div>${s}</div>`).join('');
-}
-
-// ─── Chat ──────────────────────────────────────────────────
-function toggleChat() { switchTab('chat', null); }
-
-async function sendChat() {
-  const input = document.getElementById('chat-in');
-  const msg = input.value.trim();
-  if (!msg) return;
-  input.value = '';
-  appendMsg(msg, 'user');
-  chatHistory.push({ role:'user', content: msg });
-  document.getElementById('send-btn').disabled = true;
-  appendMsg('...', 'bot', 'typing-msg');
-  try {
-    const r = await fetch(`${API}/chat`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ message: msg, history: chatHistory.slice(-6) }) });
-    const d = await r.json();
-    document.getElementById('typing-msg')?.remove();
-    const reply = d.reply || 'Sorry, I could not respond. Please try again.';
-    appendMsg(reply, 'bot');
-    chatHistory.push({ role:'assistant', content: reply });
-  } catch(e) {
-    document.getElementById('typing-msg')?.remove();
-    appendMsg('Connection error. Please check your internet and try again.', 'bot');
-  }
-  document.getElementById('send-btn').disabled = false;
-}
-
-function appendMsg(text, role, id='') {
-  const msgs = document.getElementById('chat-msgs');
-  const div = document.createElement('div');
-  div.className = `msg ${role}`;
-  if (id) div.id = id;
-  div.innerHTML = text.replace(/\n/g,'<br>');
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function askSug(el) {
-  document.getElementById('chat-in').value = el.textContent;
-  sendChat();
-}
-
-// ─── Filters ───────────────────────────────────────────────
-function chip(el, f) {
-  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
-  el.classList.add('on');
-  currentFilter = f;
-  applyFilter();
-}
-
-function applyFilter() {
-  const q = document.getElementById('search').value.toLowerCase().trim();
-  currentDistrict = document.getElementById('district-sel').value;
-  let result = [...ALL];
-  if (currentDistrict) result = result.filter(a => a.district && a.district.toLowerCase().includes(currentDistrict.toLowerCase()));
-  if (currentFilter === 'breaking') result = result.filter(a=>a.isBreaking);
-  else if (currentFilter === 'verified') result = result.filter(a=>a.verified);
-  else if (currentFilter === 'reddit') result = result.filter(a=>a.platform==='reddit');
-  else if (currentFilter === 'court') result = result.filter(a=>(a.laws||[]).length>0);
-  else if (currentFilter !== 'all') result = result.filter(a=>a.category===currentFilter||a.title.toLowerCase().includes(currentFilter));
-  if (q) result = result.filter(a=>a.title.toLowerCase().includes(q)||a.snippet.toLowerCase().includes(q)||a.source.toLowerCase().includes(q)||(a.laws||[]).some(l=>l.toLowerCase().includes(q)));
-  FILTERED = result;
-  renderNews(FILTERED);
-}
-
-function navSide(el, f) {
-  document.querySelectorAll('.s-item').forEach(s=>s.classList.remove('active'));
-  el.classList.add('active');
-  if (f==='breaking'||f==='reddit'||f==='verified'||f==='economy'||f==='climate'||f==='national'||f==='court') {
-    currentFilter = f; applyFilter();
-  } else if (f==='karnataka') {
-    document.getElementById('search').value = 'Karnataka';
-    applyFilter();
-  } else if (f==='district') {
-    document.getElementById('district-sel').focus();
-  } else {
-    currentFilter = 'all'; applyFilter();
-  }
-}
-
-function jobChip(el, f) {
-  document.querySelectorAll('#view-jobs .chip').forEach(c=>c.classList.remove('on'));
-  el.classList.add('on');
-  if (f==='sc_only') loadJobs('','1');
-  else if (f==='all') loadJobs();
-  else loadJobs(f);
-}
-
-function schemeChip(el, f) {
-  document.querySelectorAll('#view-schemes .chip').forEach(c=>c.classList.remove('on'));
-  el.classList.add('on');
-  loadSchemes(f);
-}
-
-// ─── Tab Switching ─────────────────────────────────────────
-function switchTab(tab, el) {
-  currentTab = tab;
+function switchTab(el,tab){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  if (el) el.classList.add('active');
-  else { const tabs = document.querySelectorAll('.tab'); tabs.forEach(t=>{ if(t.onclick&&t.onclick.toString().includes(tab)) t.classList.add('active'); }); }
-  document.querySelectorAll('.panel-view').forEach(p=>p.classList.remove('active'));
-  if (tab==='news'||tab==='breaking'||tab==='karnataka') {
-    document.getElementById('view-news').classList.add('active');
-    if (tab==='breaking') { currentFilter='breaking'; applyFilter(); }
-    else if (tab==='karnataka') { document.getElementById('search').value='Karnataka'; applyFilter(); }
-    else { currentFilter='all'; applyFilter(); }
-  } else if (tab==='jobs') {
-    document.getElementById('view-jobs').classList.add('active');
-    loadJobs();
-  } else if (tab==='schemes') {
-    document.getElementById('view-schemes').classList.add('active');
-    loadSchemes();
-  } else if (tab==='foreign') {
-    document.getElementById('view-foreign').classList.add('active');
-    loadForeign();
-  } else if (tab==='chat') {
-    document.getElementById('view-chat').classList.add('active');
-    document.getElementById('chat-toggle').classList.add('active');
-    document.getElementById('chat-in').focus();
-  }
+  el.classList.add('active');
+  ['news','courts','weather','prices','sources'].forEach(t=>document.getElementById('tab-'+t).style.display=t===tab?'block':'none');
+  curTab=tab;
+  if(tab==='courts') loadCourts();
+  if(tab==='weather') loadWeather();
+  if(tab==='prices') loadPricesTab();
+  if(tab==='sources') loadSourcesTab();
 }
 
-// ─── Modal ─────────────────────────────────────────────────
-function openModal(a) {
-  document.getElementById('modal-tags').innerHTML = [ptag(a), a.isBreaking?'<span class="tag t-brk">🔴 Breaking</span>':'', a.verified?'<span class="tag t-ver">✓ Verified</span>':'', a.district?`<span class="tag t-dist">📍 ${a.district}</span>`:''].join('');
-  document.getElementById('modal-title').textContent = a.title;
-  document.getElementById('modal-snippet').textContent = a.snippet||'Click the link below to read the full article.';
-  document.getElementById('modal-laws').innerHTML = (a.laws||[]).map(l=>`<span class="tag t-law">⚖ ${l}</span>`).join('');
-  document.getElementById('modal-src').innerHTML = `<div class="src-block"><div class="sb-name">${a.source} (${a.platform.toUpperCase()})</div><div class="sb-url">${a.url}</div><div class="sb-type">${a.platform==='news'?'✓ Verified News Outlet':'Social Platform'} · ${a.time}${a.score!=null?` · ▲${a.score} upvotes`:''}</div></div>`;
-  document.getElementById('modal-link').href = a.url;
+async function loadCourts(){
+  try{
+    const r=await fetch(`${API}/courts`);const d=await r.json();
+    document.getElementById('courts-list').innerHTML=d.cases.map(c=>`
+      <div class="court-card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span class="court-status ${c.importance==='high'?'cs-high':'cs-med'}">${c.status}</span>
+          <span style="font-size:10px;color:var(--text3)">${c.court}</span>
+        </div>
+        <div class="court-title">${c.case}</div>
+        <div class="court-meta">
+          <span>Next: ${c.next}</span>
+          <span>Type: ${c.type}</span>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">${(c.laws||[]).map(l=>`<span class="tag t-law">⚖ ${l}</span>`).join('')}</div>
+      </div>`).join('');
+  }catch(e){document.getElementById('courts-list').innerHTML='<div class="empty">Could not load court data</div>';}
+}
+
+const CITIES=['Bengaluru','Mumbai','Delhi','Chennai','Hyderabad','Kolkata','Pune','Ahmedabad'];
+async function loadWeather(){
+  const grid=document.getElementById('weather-grid');
+  grid.innerHTML='<div class="loading"><div class="spinner"></div></div>';
+  const results=await Promise.all(CITIES.map(c=>fetch(`${API}/weather?city=${c}`).then(r=>r.json()).catch(()=>null)));
+  grid.innerHTML=results.filter(Boolean).map(w=>{
+    const aqiCls=w.aqi<100?'aqi-good':w.aqi<200?'aqi-mod':'aqi-bad';
+    return `<div class="weather-card">
+      <div class="w-city">${w.city}</div>
+      <div class="w-temp">${w.temp}°C</div>
+      <div class="w-cond">${w.condition}</div>
+      <div class="w-row">
+        <div class="w-stat">💧 <span>${w.humidity}%</span></div>
+        <div class="w-stat">💨 <span>${w.wind}km/h</span></div>
+        <div class="w-stat">🌧 <span>${w.rain}</span></div>
+        <div class="w-stat">AQI <span class="${aqiCls}">${w.aqi}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+  // Update weather mini panel
+  const w=results[0];
+  if(w) document.getElementById('weather-mini').innerHTML=`<div class="pbox-title">☁ ${w.city} Weather</div>
+    <div style="font-size:22px;font-weight:700;color:var(--text);margin:4px 0">${w.temp}°C</div>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:6px">${w.condition}</div>
+    <div style="font-size:11px;color:var(--text3);display:flex;gap:10px">
+      <span>💧${w.humidity}%</span><span>💨${w.wind}km/h</span>
+      <span class="${w.aqi<100?'aqi-good':w.aqi<200?'aqi-mod':'aqi-bad'}">AQI ${w.aqi}</span>
+    </div>`;
+}
+
+async function loadPricesTab(){
+  try{
+    const r=await fetch(`${API}/prices`);const d=await r.json();
+    document.getElementById('prices-list').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      ${d.prices.map(p=>`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:12px 14px">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:4px">${p.name}</div>
+        <div style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:4px">${p.value}</div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span class="pr-c ${p.trend==='up'?'up':p.trend==='down'?'dn':'fl'}">${p.change}</span>
+          <span style="font-size:10px;color:var(--text3)">${p.city}</span>
+        </div>
+      </div>`).join('')}
+    </div>`;
+  }catch(e){}
+}
+
+async function loadSourcesTab(){
+  try{
+    const r=await fetch(`${API}/sources`);const d=await r.json();
+    document.getElementById('sources-list-full').innerHTML=`<div style="display:flex;flex-direction:column;gap:6px">
+      ${d.sources.map(s=>`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 13px;display:flex;align-items:center;gap:10px">
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500;color:var(--text)">${s.name}</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:2px">${s.platform.toUpperCase()} · ${s.cat} · ${s.state}</div>
+        </div>
+        <div style="font-size:11px;color:var(--green)">${s.count} articles</div>
+        <span class="tag ${s.platform==='news'?'t-verified':s.platform==='reddit'?'t-reddit':'t-youtube'}">${s.platform==='news'?'✓ Verified':s.platform.toUpperCase()}</span>
+      </div>`).join('')}
+    </div>`;
+  }catch(e){}
+}
+
+async function init(){
+  document.getElementById('status-txt').textContent='Fetching from 30+ verified sources...';
+  try{
+    const r=await fetch(`${API}/news`);const d=await r.json();
+    ALL=d.articles||[];
+    if(!ALL.length){document.getElementById('feed').innerHTML=`<div class="empty">📡 <strong style="color:var(--text2)">Could not load news</strong><br><span style="font-size:12px">The server may be waking up. Wait 30 seconds and click Refresh.</span></div>`;return;}
+    FILTERED=[...ALL];
+    renderFeed(FILTERED);
+    // Ticker
+    const items=ALL.slice(0,20).map(a=>`<span>${a.title}</span>`);
+    const doubled=[...items,...items];
+    document.getElementById('ticker').innerHTML=doubled.join('');
+    // Counts
+    document.getElementById('cnt-all').textContent=ALL.length;
+    document.getElementById('cnt-brk').textContent=ALL.filter(a=>a.isBreaking).length;
+    document.getElementById('cnt-red').textContent=ALL.filter(a=>a.platform==='reddit').length;
+    // Emergency
+    const brk=ALL.find(a=>a.isBreaking);
+    if(brk) document.getElementById('emergency-zone').innerHTML=`<div class="emergency"><div class="em-dot"></div><div><div class="em-title">🔴 Breaking — ${brk.source}</div><div class="em-meta">${brk.title} · ${brk.time}</div></div></div>`;
+    // Sources mini
+    const srcs=[...new Set(ALL.map(a=>a.source))];
+    document.getElementById('src-mini').innerHTML=srcs.map(s=>`<div style="display:flex;align-items:center;gap:5px;line-height:1.9"><div class="src-dot"></div>${s}</div>`).join('');
+    // Stats
+    const sr=await fetch(`${API}/stats`);const sd=await sr.json();
+    document.getElementById('st1').textContent=sd.bengaluru.firs_today;
+    document.getElementById('st2').textContent=sd.bengaluru.active_cases;
+    document.getElementById('st3').textContent=sd.bengaluru.pocso_open;
+    document.getElementById('st4').textContent=sd.bengaluru.cybercrime;
+    // Prices mini
+    const pr=await fetch(`${API}/prices`);const pd=await pr.json();
+    document.getElementById('price-box').innerHTML=`<div class="pbox-title">💹 Prices</div>`+pd.prices.slice(0,8).map(p=>`<div class="price-row"><span class="pr-n">${p.name}</span><span class="pr-v">${p.value}</span><span class="pr-c ${p.trend==='up'?'up':p.trend==='down'?'dn':'fl'}">${p.change}</span></div>`).join('');
+    // AI
+    const br=ALL.filter(a=>a.isBreaking).length;
+    const lws=[...new Set(ALL.flatMap(a=>a.laws||[]))].slice(0,3).join(', ');
+    document.getElementById('ai-txt').textContent=`${ALL.length} articles from ${srcs.length} sources. ${br} breaking stories. Top legal focus: ${lws||'Consumer Act, IPC'}. Commodity prices trending upward — monitor LPG and essential food items.`;
+    // Status
+    const now=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('status-txt').innerHTML=`<span style="color:var(--green)">✓</span> ${ALL.length} articles · ${srcs.length} sources · Updated ${now}`;
+    // Load weather mini
+    loadWeather();
+  }catch(e){document.getElementById('feed').innerHTML=`<div class="empty">📡 Error loading news. Click Refresh to try again.</div>`;}
+}
+
+function openModal(a){
+  document.getElementById('modal-tags').innerHTML=[ptag(a),a.isBreaking?`<span class="tag t-breaking">🔴 Breaking</span>`:'',a.verified?`<span class="tag t-verified">✓ Verified</span>`:'',(a.state&&a.state!=='India')?`<span class="tag t-local">📍 ${a.state}</span>`:''].join('');
+  document.getElementById('modal-title').textContent=a.title;
+  document.getElementById('modal-snippet').textContent=a.snippet||'Click the link below to read the full article.';
+  document.getElementById('modal-laws').innerHTML=(a.laws||[]).map(l=>`<span class="tag t-law">⚖ ${l}</span>`).join('');
+  document.getElementById('modal-source').innerHTML=`<div class="source-block"><div class="sb-name">${a.source} <span style="font-size:10px;color:var(--text3)">(${a.platform.toUpperCase()})</span></div><div class="sb-url">${a.url}</div><div class="sb-type">${a.platform==='news'?'✓ Verified Indian News Outlet':'Social/Community Platform'} · ${a.time}${a.score!=null?` · ▲${a.score} upvotes · 💬${a.comments} comments`:''}</div></div>`;
+  document.getElementById('modal-link').href=a.url;
   document.getElementById('overlay').classList.add('show');
 }
-function closeModal() { document.getElementById('overlay').classList.remove('show'); }
+function closeModal(){document.getElementById('overlay').classList.remove('show');}
 
-document.getElementById('search').addEventListener('input', applyFilter);
-
-async function refresh() {
-  document.getElementById('spin-ic').style.animation = 'spin .7s linear infinite';
+async function refresh(){
+  const ico=document.getElementById('spin-ico');
+  ico.classList.add('spinning');
   await fetch(`${API}/refresh`);
-  await loadNews();
-  document.getElementById('spin-ic').style.animation = '';
+  await init();
+  ico.classList.remove('spinning');
 }
 
-// ─── Init ──────────────────────────────────────────────────
-loadDistricts();
-loadNews();
-loadPrices();
-loadStats();
-setInterval(loadNews, 5*60*1000);
-setInterval(loadStats, 2*60*1000);
+init();
+setInterval(init,5*60*1000);
 </script>
 </body>
 </html>
